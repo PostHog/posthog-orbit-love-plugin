@@ -1,22 +1,27 @@
-// <TODO: your plugin code here - you can base it on the code below, but you don't have to>
+export async function runEveryMinute ({ config }) {
+    for (const workspaceId of config.workspaceId.split(',')) {
+        const apiUrl = `https://app.orbit.love/api/v1/${workspaceId}/reports`
+        let res = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${config.orbitApiKey}` } })
+        res = await res.json()
+        const attributes = res.data?.attributes
 
-// Some internal library function
-async function getRandomNumber() {
-    return 4
-}
+        const sharedReportProps = {
+            workspace: attributes['workspace_id'],
+            timeframe_start_date: attributes.timeframe.start_date,
+            timeframe_end_date: attributes.timeframe.end_date,
+            timeframe_start_date_last: attributes.timeframe.start_date_last,
+            timeframe_end_date_last: attributes.timeframe.end_date_last,
+        }
 
-// Plugin method that runs on plugin load
-export async function setupPlugin({ config }) {
-    console.log(`Setting up the plugin`)
-}
+        const SUPPORTED_REPORTS = ['overview', 'members', 'activities']
 
-// Plugin method that processes event
-export async function processEvent(event, { config, cache }) {
-    const counterValue = (await cache.get('greeting_counter', 0))
-    cache.set('greeting_counter', counterValue + 1)
-    if (!event.properties) event.properties = {}
-    event.properties['greeting'] = config.greeting
-    event.properties['greeting_counter'] = counterValue
-    event.properties['random_number'] = await getRandomNumber()
-    return event
+        SUPPORTED_REPORTS.forEach((report) => {
+            posthog.capture('orbit love report', {
+                'report type': report,
+                ...attributes[report],
+                ...sharedReportProps
+            })
+        })
+    }
+
 }

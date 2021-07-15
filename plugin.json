@@ -1,19 +1,23 @@
 {
-    "name": "<TODO: your plugin name>",
+    "name": "Orbit Love Report Sync",
     "url": "<TODO: Your Plugin URL here>",
-    "description": "<TODO: Your Plugin description here>",
+    "description": "Send Orbit.love report data to PostHog.",
     "main": "index.js",
     "posthogVersion": ">= 1.25.0",
     "config": [
         {
-            "markdown": "<TODO: your plugin config, remove if none>"
+            "key": "orbitApiKey",
+            "name": "Orbit API Key",
+            "type": "string",
+            "hint": "You API key is available in your Orbit account settings. This key is required to access the Orbit API.",
+            "required": true
         },
         {
-            "key": "greeting",
-            "name": "What greeting would you like to use?",
+            "key": "workspaceId",
+            "name": "Orbit Workspace ID",
             "type": "string",
-            "default": "Hello World!",
-            "required": false
+            "hint": "The workspace ID to pull the report for. Use comma-separated values for multiple workspaces.",
+            "required": true
         }
     ]
 }
