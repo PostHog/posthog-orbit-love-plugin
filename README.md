@@ -2,14 +2,20 @@
 
 This plugin provides an hourly sync of workspace stats from Orbit's [Workspace Stats API](https://docs.orbit.love/reference/get_-workspace-id-reports) into PostHog.
 
-Workspace stats are sent into your PostHog instance as an `orbit love report` event. Apply a filter on the `report type` event property to access the type of report. 
-
 ## Installation
 
 1. Open PostHog.
 1. Go to the Plugins page from the sidebar.
 1. Head to the Advanced tab.
 1. "Install from GitHub, GitLab or npm" using this repository's URL.
+
+## Usage
+
+Workspace stats are sent into your PostHog instance as an `orbit love report` event. 
+- Apply a filter on the `report type` event properties specific to a report.
+  - Supported report types include: `overview`, `members`, and `activities`.
+
+Refer to the [Workspace Stats API](https://docs.orbit.love/reference/get_-workspace-id-reports) for a full list of properties available in each report.
 
 ## Questions?
 
