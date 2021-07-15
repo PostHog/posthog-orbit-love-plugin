@@ -1,6 +1,6 @@
 {
     "name": "Orbit Love Report Sync",
-    "url": "<TODO: Your Plugin URL here>",
+    "url": "https://github.com/PostHog/posthog-orbit-love-plugin",
     "description": "Send Orbit.love report data to PostHog.",
     "main": "index.js",
     "posthogVersion": ">= 1.25.0",
