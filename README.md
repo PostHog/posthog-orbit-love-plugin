@@ -1,4 +1,4 @@
-# Orbit Love Plugin
+# Orbit.love Plugin
 An hourly sync of orbit.love report data from their [Workspace Stats API](https://docs.orbit.love/reference/get_-workspace-id-reports) into PostHog. 
 
 Workspace stats are sent into your PostHog instance as an `orbit love report` event. Apply a filter on the `report type` event property to access the type of report. 
