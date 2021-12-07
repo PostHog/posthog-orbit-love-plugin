@@ -6,8 +6,8 @@ This plugin provides an hourly sync of workspace stats from Orbit's [Workspace S
 
 1. Open PostHog.
 1. Go to the Plugins page from the sidebar.
-1. Head to the Advanced tab.
-1. "Install from GitHub, GitLab or npm" using this repository's URL.
+1. Head to the Repository tab.
+1. Search for "orbit" and install the plugin.
 
 ## Usage
 
